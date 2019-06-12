@@ -1,6 +1,6 @@
 ﻿#include"Student.h"
-#include"SortingTime.h"
 #include<vector>
+#include<list>
 #include<math.h>
 
 int main() {
@@ -36,6 +36,13 @@ int main() {
 	cout << endl;
 
 	//task 3
+	//3.	Напишите программу, сравнивающую время сортировки элементов контейнера
+	//посредством метода list::sort() и алгоритма std::sort().
+	//Сделайте соответствующие выводы.
+
+
+
+
 
 
 
