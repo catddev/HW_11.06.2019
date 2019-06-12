@@ -2,6 +2,7 @@
 #include<vector>
 #include<list>
 #include<math.h>
+#include <ctime>
 
 int main() {
 	srand(time(NULL));
@@ -40,8 +41,30 @@ int main() {
 	//посредством метода list::sort() и алгоритма std::sort().
 	//Сделайте соответствующие выводы.
 
+	list<int> l1;
+	vector<int> v2;
+	for (int i = 0; i < 10; i++) {
+		l1.push_back(rand() % 100);
+		v2.push_back(rand() % 100);
+	}
+	for_each(l1.begin(), l1.end(), [](int a) {cout << a << " "; });
+	clock_t start1 = clock();
+	l1.sort();//list::sort()
+	clock_t stop1 = clock();
+	cout << endl;
+	for_each(l1.begin(), l1.end(), [](int a) {cout << a << " "; });
+	double time_spent1 = (double)(stop1- start1)*1000.0;
+	cout << "Time: " << time_spent1 << endl << endl;
 
-
+	
+	for_each(v2.begin(), v2.end(), [](int a) {cout << a << " "; });
+	clock_t start2 = clock();
+	//sort(v.begin(), v.end(), greater<int>());//std::sort()
+	clock_t stop2 = clock();
+	cout << endl;
+	for_each(v2.begin(), v2.end(), [](int a) {cout << a << " "; });
+	double time_spent2 = (double)(stop2 - start2)*1000.0;
+	cout << "Time: " << time_spent2 << endl;
 
 
 
