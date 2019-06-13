@@ -2,7 +2,10 @@
 #include<vector>
 #include<list>
 #include<math.h>
+#include<algorithm>
 #include <ctime>
+#include<time.h>
+//#define CLOCKS_PER_SEC 1000000
 
 int main() {
 	srand(time(NULL));
@@ -48,25 +51,25 @@ int main() {
 		v2.push_back(rand() % 100);
 	}
 	for_each(l1.begin(), l1.end(), [](int a) {cout << a << " "; });
-	clock_t start1 = clock();
+	int begin = clock();
 	l1.sort();//list::sort()
-	clock_t stop1 = clock();
 	cout << endl;
-	for_each(l1.begin(), l1.end(), [](int a) {cout << a << " "; });
-	double time_spent1 = (double)(stop1- start1)*1000.0;
-	cout << "Time: " << time_spent1 << endl << endl;
 
+	int end = clock();
+	for_each(l1.begin(), l1.end(), [](int a) {cout << a << " "; });
+	int time_spent1 = (end - begin)/CLOCKS_PER_SEC;
+	cout << "Time: " << time_spent1 << endl << endl;
 	
 	for_each(v2.begin(), v2.end(), [](int a) {cout << a << " "; });
-	clock_t start2 = clock();
-	//sort(v.begin(), v.end(), greater<int>());//std::sort()
-	clock_t stop2 = clock();
 	cout << endl;
+
+	int begin2 = clock();
+	sort(v2.begin(), v2.end());//std::sort()
+	int end2 = clock();
+	
 	for_each(v2.begin(), v2.end(), [](int a) {cout << a << " "; });
-	double time_spent2 = (double)(stop2 - start2)*1000.0;
+	int time_spent2 = (end2 - begin2)/CLOCKS_PER_SEC;
 	cout << "Time: " << time_spent2 << endl;
-
-
 
 
 	system("pause");

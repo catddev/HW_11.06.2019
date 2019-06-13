@@ -24,7 +24,6 @@ priority_queue<int> Student::getQueue()
 
 void Student::random(int size)
 {
-	srand(time(NULL));
 	for (int i = 0; i < size; i++)
 		grades.push(rand() % 8+5);
 }
