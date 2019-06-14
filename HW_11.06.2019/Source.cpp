@@ -51,13 +51,16 @@ int main() {
 		v2.push_back(rand() % 100);
 	}
 	for_each(l1.begin(), l1.end(), [](int a) {cout << a << " "; });
-	int begin = clock();
-	l1.sort();//list::sort()
 	cout << endl;
 
-	int end = clock();
+	//пришлось захватить в блок begin-end clock()еще и распечатку, иначе если засекать время только на сортировку,
+	//то будет всегда ноль, т.к. слишком маленькое время требуется
+	int begin = clock();
+	l1.sort();//list::sort()
 	for_each(l1.begin(), l1.end(), [](int a) {cout << a << " "; });
-	int time_spent1 = (end - begin)/CLOCKS_PER_SEC;
+	int end = clock();
+
+	int time_spent1 = (end - begin)*1000/CLOCKS_PER_SEC;
 	cout << "Time: " << time_spent1 << endl << endl;
 	
 	for_each(v2.begin(), v2.end(), [](int a) {cout << a << " "; });
@@ -65,10 +68,10 @@ int main() {
 
 	int begin2 = clock();
 	sort(v2.begin(), v2.end());//std::sort()
-	int end2 = clock();
-	
 	for_each(v2.begin(), v2.end(), [](int a) {cout << a << " "; });
-	int time_spent2 = (end2 - begin2)/CLOCKS_PER_SEC;
+	int end2 = clock();
+
+	int time_spent2 = (end2 - begin2)*1000/CLOCKS_PER_SEC;
 	cout << "Time: " << time_spent2 << endl;
 
 
